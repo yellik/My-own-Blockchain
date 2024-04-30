@@ -5,7 +5,7 @@ export default class Blockchain {
         this.chain = [];
 
         //create a genesis block
-        
+        this.createBlock('0', '0', [])
     }
 
     //method for adding new blocks 
