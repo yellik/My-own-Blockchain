@@ -1,4 +1,5 @@
 import Block from "./Block.mjs";
+import { hashBlock } from "../utilities/crypto-lib.mjs";
 
 export default class Blockchain {
     constructor() {
@@ -9,17 +10,24 @@ export default class Blockchain {
     }
 
     //method for adding new blocks 
+   
     createBlock(previousBlockHash, currentBlockHash, data){
-        const block = {
-            this.chain.length + 1,
-            previousBlockHash,
-            currentBlockHash, 
-            data,
-        };
+        //create the block
+            const block = new Block(
+                this.chain.length + 1,
+                previousBlockHash,
+                currentBlockHash,
+                data);
+     
+            this.chain.push(block)
+     
+            return block;
+        }
+        
+    hashBlock(previousBlockHash, currentBlockHash){
+        const stringToHash = previousBlockHash + JSON.stringify(currentBlockHash);
+        const hash = createHash(stringToHash)
 
-        this.chain.push(block)
-
-        //return the newly created block
-        return block;
+        return hash;
     }
 }
