@@ -2,7 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import blockchainRouter from './router/blockchain-routes.mjs'
 
-//reads the env file from the env cat 
+//reads the env file from the env 
 dotenv.config({ path: 'config/config.env' });
 
 const app = express();

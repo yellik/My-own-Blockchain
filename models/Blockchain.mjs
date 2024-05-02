@@ -5,6 +5,10 @@ export default class Blockchain {
     constructor() {
         this.chain = [];
 
+        // array of nodes registred to this (blockchain) network
+        this.memberNodes = [];
+        //assign own variable
+        this.nodeUrl = process.argv[3];
         //create a genesis block
         this.createBlock(Date.now(), '0', '0', [], 4)
     }

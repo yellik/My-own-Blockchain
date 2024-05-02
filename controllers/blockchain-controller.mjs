@@ -1,4 +1,4 @@
-import { blockchain } from "../../startup.mjs"
+import { blockchain } from "../startup.mjs"
 
 
 const getBlockchain = (req, res, next) => {
