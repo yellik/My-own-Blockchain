@@ -3,11 +3,12 @@ import dotenv from 'dotenv'
 import blockchainRouter from './router/blockchain-routes.mjs'
 
 //reads the env file from the env cat 
-dotenv.config({ path: 'config/config.env' })
+dotenv.config({ path: 'config/config.env' });
 
 const app = express();
 
 //middleware
+//convert json body to JSON
 app.use(express.json())
 app.use('/api/v1/blockchain', blockchainRouter)
 //get the port or use the default 

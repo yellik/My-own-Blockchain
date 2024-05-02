@@ -1,33 +1,63 @@
 import Block from "./Block.mjs";
 import { hashBlock } from "../utilities/crypto-lib.mjs";
-
+//import { DIFFICULTY, MINE_RATE } from "../utilities/settings.mjs";
 export default class Blockchain {
     constructor() {
         this.chain = [];
 
         //create a genesis block
-        this.createBlock('0', '0', [])
+        this.createBlock(Date.now(), '0', '0', [], 4)
     }
 
     //method for adding new blocks 
    
-    createBlock(previousBlockHash, currentBlockHash, data){
+    createBlock(timestamp, previousBlockHash, currentBlockHash, data){
         //create the block
             const block = new Block(
+                timestamp,
                 this.chain.length + 1,
                 previousBlockHash,
                 currentBlockHash,
-                data);
+                data,
+            );
      
             this.chain.push(block)
      
             return block;
         }
         
-    hashBlock(previousBlockHash, currentBlockHash){
-        const stringToHash = previousBlockHash + JSON.stringify(currentBlockHash);
-        const hash = createHash(stringToHash)
-
-        return hash;
+    getLastBlock() {
+        return this.chain.at(-1);
     }
+        
+    hashBlock(timestamp, previousBlockHash, currentBlockData, nonce){
+        const stringToHash = 
+        timestamp.toString() +
+        previousBlockHash + 
+        JSON.stringify(currentBlockData) +
+        nonce;
+      const hash = hashBlock(stringToHash)
+       
+      return hash;
+    }
+
+    proofOfWork(timestamp, prevBlockHash, data){
+        let DIFFICULTY_LEVEL = process.env.DIFFICULTY;
+        let nonce = 0;
+        let hash = this.hashBlock(timestamp, prevBlockHash, data, nonce);
+
+        while(
+            hash.substring(0, DIFFICULTY_LEVEL) !== '0'.repeat(DIFFICULTY_LEVEL)
+        ){
+            nonce++
+            hash = this.hashBlock(timestamp, prevBlockHash, data, nonce);
+            console.log(hash);
+        }
+
+        console.log(nonce);
+        return nonce;
+    }
+
+ 
+
 }
