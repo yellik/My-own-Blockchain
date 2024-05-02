@@ -2,7 +2,7 @@ import express from 'express'
 import { 
     getBlockchain, 
     createBlock 
-} from '/Users/yelen/Documents/BCU23/06_NODE/blockchain/controllers/blockchain-controller.mjs'
+} from '../controllers/blockchain-controller.mjs'
 
 const router = express.Router();
 
