@@ -1,12 +1,12 @@
 import { blockchain } from "../startup.mjs";
 
-const listMembers = (req, res, next) => {
+export const listMembers = (req, res, next) => {
     res
         .status(200)
-        .json({ success: true, data: blockchain.memberNodes });
+        .json({ success: true, statusCode: 200, data: blockchain.memberNodes });
 
 }
-const registerNode = (req, res, next) => {
+export const registerNode = (req, res, next) => {
     //get the requested member node address
     const node = req.body;
     if (
@@ -14,6 +14,8 @@ const registerNode = (req, res, next) => {
         blockchain.nodeUrl !== node.nodeUrl
     ){
         blockchain.memberNodes.push(node.nodeUrl);
+        //syncing the new member / existing member / own node
+        syncMembers(node.nodeUrl);
 
         res.status(201).json({
             success: true, 
@@ -27,10 +29,25 @@ const registerNode = (req, res, next) => {
             data: { message: `The node with the url ${node.nodeUrl} is already registred`}
         })
     }
+};
 
-   
+const syncMembers = (url) => {
+    //create a new array of all members and include own node 
+    const members = [...blockchain.memberNodes, blockchain.nodeUrl];
+    //iterate through the members and send a copy to all members 
+    try {
+        members.forEach(async (member) => {
+            const body = { nodeUrl: member };
+            await fetch(`${url}/api/v1/members/register-node`, {
+                method: 'POST',
+                body: JSON.stringify(body),
+                headers: {
+                    'Content-Type': 'application/jaon',
+                },
+            });
+        });
+    } catch (error) {
+        console.log(error);
+    }
 }
-export {
-    listMembers,
-    registerNode
-}
+
