@@ -1,8 +1,9 @@
 import { blockchain } from "../startup.mjs"
-
+import fileHandler from '../utilities/fileHandler.mjs'
+import ResponseModel from "../utilities/Responsemodel.mjs";
 
 const getBlockchain = (req, res, next) => {
-    res.status(200).json({ success: true, data: blockchain })
+    res.status(200).json(new ResponseModel({ success: true, data: blockchain }))
 }
 
 //mine mechanism
@@ -33,7 +34,11 @@ const createBlock = (req, res, next) => {
         data
     );
     
-    res.status(201).json({ success: true, data: block })
+    fileHandler('data', 'blocks.json', blockchain);
+
+    res.status(201).json(new ResponseModel({ statusCode: 201, data: block }));
+
+    //res.status(201).json({ success: true, data: block })
 };
 
 export {
