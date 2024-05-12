@@ -35,7 +35,7 @@ app.use('/api/v1/blockchain', blockchainRouter)
 //   app.use('/api/v1/circlechain')
 //}
 //get the port or use the default 
-const PORT = process.env.PORT || 5010;
-//const PORT = process.argv[2];
+//const PORT = process.env.PORT || 5010;
+const PORT = process.argv[2];
 
 app.listen(PORT, () => console.log(`Server is running on the port: ${PORT}`))

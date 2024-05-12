@@ -1,6 +1,7 @@
 import { blockchain } from "../startup.mjs"
 import fileHandler from '../utilities/fileHandler.mjs'
 import ResponseModel from "../utilities/Responsemodel.mjs";
+import { DIFFICULTY } from "../utilities/settings.mjs";
 
 const getBlockchain = (req, res, next) => {
     res.status(200).json(new ResponseModel({ success: true, data: blockchain }))
@@ -15,6 +16,7 @@ const createBlock = (req, res, next) => {
     console.log(data);
 
     const timestamp = Date.now();
+
     const nonce = blockchain.proofOfWork(
         timestamp, 
         lastBlock.currentBlockHash, 
@@ -24,7 +26,8 @@ const createBlock = (req, res, next) => {
         timestamp,
         lastBlock.currentBlockHash, 
         data,
-        nonce
+        nonce,
+        DIFFICULTY
     );
 
     const block = blockchain.createBlock(

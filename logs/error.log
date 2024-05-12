@@ -8,3 +8,4 @@ Method: POST Url: /api/v1/blockchain/mine Date: 2024-05-06 Time 20:00:52 Success
 Method: POST Url: /api/v1/blockchain/mine Date: 2024-05-06 Time 20:00:54 Success: false Message: Could not find the resource /api/v1/blockchain/mine
 Method: POST Url: /api/v1/blockchain/mine Date: 2024-05-06 Time 20:01:33 Success: false Message: Could not find the resource /api/v1/blockchain/mine
 Method: POST Url: /api/v1/blockchain/mine Date: 2024-05-06 Time 20:03:21 Success: false Message: Could not find the resource /api/v1/blockchain/mine
+Method: GET Url: /api/v1/blockchain Date: 2024-05-12 Time 12:59:29 Success: false Message: Could not find the resource /api/v1/blockchain

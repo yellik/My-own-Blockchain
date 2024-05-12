@@ -36,6 +36,12 @@ describe("Block", () => {
     });
   });
 
+  describe('property values', () => {
+    it('should set a timestamp', () => {
+        expect(block.timestamp).not.toEqual(undefined);
+    })
+  })
+
   it("should return an instance of the Block class", () => {
     expect(block instanceof Block).toBe(true);
   });

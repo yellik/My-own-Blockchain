@@ -16,12 +16,12 @@ export default class Blockchain {
 
     //method for adding new blocks 
    
-    createBlock(timestamp, previousBlockHash, currentBlockHash, nonce, DIFFICULTY, data){
+    createBlock(timestamp, prevBlockHash, currentBlockHash, nonce, DIFFICULTY, data){
         //create the block
             const block = new Block(
                 timestamp,
                 this.chain.length + 1,
-                previousBlockHash,
+                prevBlockHash,
                 currentBlockHash,
                 nonce,
                 DIFFICULTY,
@@ -37,24 +37,24 @@ export default class Blockchain {
         return this.chain.at(-1);
     }
         
-    hashBlock(timestamp, previousBlockHash, currentBlockData, nonce){
+    hashBlock(timestamp, prevBlockHash, currentBlockData, nonce){
         const stringToHash = 
         timestamp.toString() +
-        previousBlockHash + 
+        prevBlockHash + 
         JSON.stringify(currentBlockData) +
-        nonce;
+        nonce; 
       const hash = hashBlock(stringToHash)
        
       return hash;
     }
 
     proofOfWork(timestamp, prevBlockHash, data){
-        let DIFFICULTY_LEVEL = process.env.DIFFICULTY;
+        let DIFFICULTY = process.env.DIFFICULTY;
         let nonce = 0;
         let hash = this.hashBlock(timestamp, prevBlockHash, data, nonce);
 
         while(
-            hash.substring(0, DIFFICULTY_LEVEL) !== '0'.repeat(DIFFICULTY_LEVEL)
+            hash.substring(0, DIFFICULTY) !== '0'.repeat(DIFFICULTY)
         ){
             nonce++
             hash = this.hashBlock(timestamp, prevBlockHash, data, nonce);
