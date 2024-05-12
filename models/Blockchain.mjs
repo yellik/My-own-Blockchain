@@ -1,5 +1,6 @@
 import Block from "./Block.mjs";
 import { hashBlock } from "../utilities/crypto-lib.mjs";
+import { DIFFICULTY } from "../utilities/settings.mjs";
 //import { DIFFICULTY, MINE_RATE } from "../utilities/settings.mjs";
 export default class Blockchain {
     constructor() {
@@ -15,13 +16,15 @@ export default class Blockchain {
 
     //method for adding new blocks 
    
-    createBlock(timestamp, previousBlockHash, currentBlockHash, data){
+    createBlock(timestamp, previousBlockHash, currentBlockHash, nonce, DIFFICULTY, data){
         //create the block
             const block = new Block(
                 timestamp,
                 this.chain.length + 1,
                 previousBlockHash,
                 currentBlockHash,
+                nonce,
+                DIFFICULTY,
                 data,
             );
      
