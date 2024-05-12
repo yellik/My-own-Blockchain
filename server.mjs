@@ -10,7 +10,7 @@ import path from 'path'
 
 //reads the env file from the env 
 dotenv.config({ path: 'config/config.env' });
-console.log(process.env.FF_CIRCLECHAIN);
+//console.log(process.env.FF_CIRCLECHAIN);
 const app = express();
 
 
@@ -30,9 +30,9 @@ app.use(express.json());
 //convert json body to JSON
 
 app.use('/api/v1/blockchain', blockchainRouter)
-app.use('/api/v1/members', membersRouter)
+//app.use('/api/v1/members', membersRouter)
 //if(process.env.FF_CIRCLECHAIN === 'ON'){
-//    app.use('/api/v1/circlechain')
+//   app.use('/api/v1/circlechain')
 //}
 //get the port or use the default 
 const PORT = process.env.PORT || 5010;

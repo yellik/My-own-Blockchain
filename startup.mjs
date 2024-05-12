@@ -15,7 +15,7 @@ export const blockchain = new Blockchain();
 
 if(blocks && blocks.chain) {
     blockchain.chain = blocks.chain
-    blockchain.memberNodes = blocks.memberNodes
+    //blockchain.memberNodes = blocks.memberNodes
 }else{
     writeFiles('data', 'blocks.json', blockchain)
 }
