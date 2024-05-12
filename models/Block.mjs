@@ -1,13 +1,14 @@
+import { GENESIS_DATA } from "../utilities/settings.mjs";
 
 export default class Block {
     constructor(
-        timestamp, 
+        {timestamp, 
         blockIndex,
         currentBlockHash, 
         prevBlockHash,
         nonce, 
         difficulty,
-        data){
+        data}){
         this.timestamp = timestamp;
         this.blockIndex = blockIndex;
         this.currentBlockHash = currentBlockHash;
@@ -16,7 +17,10 @@ export default class Block {
         this.nonce = nonce;
         this.difficulty = difficulty;
         this.data = data;
-    
+    }
+
+    static createGenesis() {
+        return new this(GENESIS_DATA)
     }
 }
 
