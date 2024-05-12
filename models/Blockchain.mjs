@@ -51,17 +51,17 @@ export default class Blockchain {
     proofOfWork(timestamp, prevBlockHash, data){
         let DIFFICULTY = process.env.DIFFICULTY;
         let nonce = 0;
-        let hash = this.hashBlock(timestamp, prevBlockHash, data, nonce);
+        let hash = this.hashBlock(timestamp, prevBlockHash, nonce, data);
 
         while(
             hash.substring(0, DIFFICULTY) !== '0'.repeat(DIFFICULTY)
         ){
             nonce++
-            hash = this.hashBlock(timestamp, prevBlockHash, data, nonce);
-            console.log(hash);
+            hash = this.hashBlock(timestamp, prevBlockHash, nonce, data);
+            //console.log(hash);
         }
 
-        console.log(nonce);
+        console.log("the nonce is", + nonce);
         return nonce;
     }
 

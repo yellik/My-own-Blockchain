@@ -18,22 +18,20 @@ const app = express();
 //middleware
 app.use(express.json());
 
-//catch all url...
-//app.all('*', (req, res, next) => {
-//    next(new ErrorResponse(`Could not find the resource ${req.originalUrl}`, 404));
-//});
-
-//cantral error handling
-//app.use(errorHandler);
-//middleware
-
 //convert json body to JSON
 
 app.use('/api/v1/blockchain', blockchainRouter)
 //app.use('/api/v1/members', membersRouter)
-//if(process.env.FF_CIRCLECHAIN === 'ON'){
-//   app.use('/api/v1/circlechain')
-//}
+
+//middleware
+//cantral error handling
+app.use(errorHandler);
+
+//catch all url...
+app.all('*', (req, res, next) => {
+    next(new ErrorResponse(`Could not find the resource ${req.originalUrl}`, 404));
+});
+
 //get the port or use the default 
 //const PORT = process.env.PORT || 5010;
 const PORT = process.argv[2];

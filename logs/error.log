@@ -9,3 +9,10 @@ Method: POST Url: /api/v1/blockchain/mine Date: 2024-05-06 Time 20:00:54 Success
 Method: POST Url: /api/v1/blockchain/mine Date: 2024-05-06 Time 20:01:33 Success: false Message: Could not find the resource /api/v1/blockchain/mine
 Method: POST Url: /api/v1/blockchain/mine Date: 2024-05-06 Time 20:03:21 Success: false Message: Could not find the resource /api/v1/blockchain/mine
 Method: GET Url: /api/v1/blockchain Date: 2024-05-12 Time 12:59:29 Success: false Message: Could not find the resource /api/v1/blockchain
+Method: GET Url: /api/v1/blockchain Date: 2024-05-12 Time 16:20:48 Success: false Message: Could not find the resource /api/v1/blockchain
+Method: POST Url: /api/v1/blockchain/mine Date: 2024-05-12 Time 16:46:28 Success: undefined Message: Cannot access 'lastBlock' before initialization
+Method: POST Url: /api/v1/blockchain/mine Date: 2024-05-12 Time 16:47:06 Success: undefined Message: Cannot access 'data' before initialization
+Method: POST Url: /api/v1/blockchain/mine Date: 2024-05-12 Time 16:47:08 Success: undefined Message: Cannot access 'data' before initialization
+Method: POST Url: /api/v1/blockchain/mine Date: 2024-05-12 Time 17:03:10 Success: undefined Message: Unexpected token 'h', "hello bloc"... is not valid JSON
+Method: POST Url: /api/v1/blockchain/mine Date: 2024-05-12 Time 17:03:33 Success: undefined Message: Expected ':' after property name in JSON at position 28
+Method: POST Url: /api/v1/blockchain/mine Date: 2024-05-12 Time 17:03:54 Success: undefined Message: Expected ':' after property name in JSON at position 12
