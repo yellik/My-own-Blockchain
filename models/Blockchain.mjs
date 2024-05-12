@@ -4,10 +4,10 @@ import { DIFFICULTY } from "../utilities/settings.mjs";
 //import { DIFFICULTY, MINE_RATE } from "../utilities/settings.mjs";
 export default class Blockchain {
     constructor() {
-        this.chain = [];
+        this.chain = []; // <<<==== blockchain.chain
 
         // array of nodes registred to this (blockchain) network
-        this.memberNodes = [];
+        this.memberNodes = []; /// <<<==== blockchain.members 
         //assign own variable
         this.nodeUrl = process.argv[3];
         //create a genesis block
